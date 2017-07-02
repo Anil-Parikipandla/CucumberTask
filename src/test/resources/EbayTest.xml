@@ -1,0 +1,10 @@
+<suite name="SampleTestSuite" >	 
+  <test name="EbayTest">
+      <parameter name="browserName" value="chrome"></parameter>
+     <parameter name="url" value="http://www.ebay.com/"></parameter>
+  	 <classes>
+	 	<class name="com.epam.customrunner.TestRunner"/>
+  	 </classes>
+ </test>
+
+</suite>
