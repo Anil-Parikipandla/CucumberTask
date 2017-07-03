@@ -4,13 +4,16 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class InitialSetup {
 	private static WebDriver driver ;
 	public static final int MINTIME = 10;
 
-	public static void OpenBroswer(String browserName){
-		driver = new ChromeDriver();
+	public static void OpenBroswer(){
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+		DesiredCapabilities capabilities_chrome = DesiredCapabilities.chrome();
+		driver = new ChromeDriver(capabilities_chrome);
 	}
 
 	public static WebDriver getDriver(){

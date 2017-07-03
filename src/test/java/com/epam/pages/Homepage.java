@@ -16,22 +16,22 @@ public class Homepage extends BasePage {
 	@FindBy(xpath = "(//*[@id='Results']//*[@id='ResultSetItems']//li[starts-with(@id,'item')])[1]//a")	
 	private WebElement firstProduct;
 	
-	Homepage(WebDriver driver) {
+	public Homepage(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
 	}
 	
 	public void searchForProduct(String NameOfProduct){
-		miscFunctions.WaitForClickableElement(SearchBar);
+		WaitForClickableElement(SearchBar);
 		SearchBar.clear();
 		SearchBar.sendKeys(NameOfProduct);
 		
-		miscFunctions.WaitForClickableElement(SearchButton);
+		WaitForClickableElement(SearchButton);
 		SearchButton.click();
 	}
 	
 	public ProductPage selectFirstProduct(){
-		miscFunctions.WaitForClickableElement(firstProduct);
+		WaitForClickableElement(firstProduct);
 		firstProduct.click();
 		return new ProductPage(driver);
 	}

@@ -7,8 +7,8 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "features"
-		,glue={"com.epam.stepDefination"}
+		features = "Features"
+		,glue={"src/test/java/com/epam/stepDefinitions/AddToCart.java"}
 		,plugin = {"html:target/cucumber-html-report"})
 public class TestRunner {
 
