@@ -14,41 +14,41 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class AddToCart {
-	
+
 	private static final String EBAY_URL = "http://www.ebay.com/";
-	private static final String EXPECTED_PAGE_TITLE = "";
-	private String ProductTitle = "";		
+	private static final String EXPECTED_PAGE_TITLE = "Electronics, Cars, Fashion, Collectibles, Coupons and More | eBay";
+	private String ProductTitle = "";
 	private WebDriver driver;
-	
+
 	private Homepage Homepage;
 	private ProductPage productPage;
 	private ShoppingCartPage shoppingCartPage;
-	
-	
+
 	@Given("^Chrome browser is open$")
-	public void chrome_browser_is_open() throws Throwable {
-	    InitialSetup.OpenBroswer();
-	    driver = InitialSetup.getDriver();
+	public void chrome_browser_is_open() {
+		InitialSetup.OpenBroswer();
+		driver = InitialSetup.getDriver();
 	}
 
-	@Parameters({"url"})
+	@Parameters({ "url" })
 	@Given("^Ebay Homepage is launched$")
-	public void ebay_Homepage_is_launched() throws Throwable {
+	public void ebay_Homepage_is_launched() {
 		InitialSetup.goToUrl(EBAY_URL);
 		Homepage = new Homepage(driver);
 		Assert.assertEquals(EXPECTED_PAGE_TITLE, driver.getTitle(), "Ebay HomePage is not launched");
 	}
 
 	@When("^we search for fossil Mens Watch$")
-	public void we_search_for_fossil_Mens_Watch() throws Throwable {
+	public void we_search_for_fossil_Mens_Watch() {
 		Homepage.searchForProduct("fossil Mens Watch");
 		Homepage.selectFirstProduct();
 	}
 
 	@When("^add it to cart$")
-	public void add_it_to_cart() throws Throwable {
+	public void add_it_to_cart() {
 		ProductTitle = productPage.getProductTitle();
-		shoppingCartPage=productPage.addProductToCart();
+		System.out.println(ProductTitle);
+		shoppingCartPage = productPage.addProductToCart();
 	}
 
 	@Then("^fossil Mens Watch should be added and displayed in the cart$")
@@ -57,15 +57,15 @@ public class AddToCart {
 	}
 
 	@When("^we search for \"([^\"]*)\"$")
-	public void we_search_for(String product) throws Throwable {
+	public void we_search_for(String product) {
 		Homepage.searchForProduct(product);
 		productPage = Homepage.selectFirstProduct();
 	}
 
 	@Then("^\"([^\"]*)\" should be added and displayed in the cart$")
-	public void should_be_added_and_displayed_in_the_cart(String product) throws Throwable {
+	public void should_be_added_and_displayed_in_the_cart(String product) {
 		boolean blnStatus = shoppingCartPage.isProductAddedToCart(ProductTitle);
-		Assert.assertTrue(blnStatus, product+" is not added to the cart");
+		Assert.assertTrue(blnStatus, product + " is not added to the cart");
 		driver.quit();
 		driver = null;
 	}
