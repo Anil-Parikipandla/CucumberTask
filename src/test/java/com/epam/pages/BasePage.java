@@ -34,18 +34,21 @@ public abstract class BasePage {
 	public void WaitForClickableElement(WebElement webElement){
 		WebDriverWait wait = new WebDriverWait(driver, MINTIME);
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		System.out.println("Waiting for the element: "+webElement+"to be clickable.");
 	}
 
 	public void waitForElementVisible(WebElement webElement)
 	{
 		WebDriverWait wait = (new WebDriverWait( driver,MINTIME));
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
+		System.out.println("Waiting for the element: "+webElement+"to be visible.");
 	}
 	
 	public void scrollToElement(WebElement webElement)
 	{
 		JavascriptExecutor jsexe =(JavascriptExecutor) driver;
 		jsexe.executeScript("arguments[0].scrollIntoView()", webElement);
+		System.out.println("Scrolling the page to the element: "+webElement);
 	}
 	
 	

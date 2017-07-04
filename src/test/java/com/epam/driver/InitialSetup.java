@@ -14,6 +14,7 @@ public class InitialSetup {
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 		DesiredCapabilities capabilities_chrome = DesiredCapabilities.chrome();
 		driver = new ChromeDriver(capabilities_chrome);
+		System.out.println("Opened a new Browser.");
 	}
 
 	public static WebDriver getDriver(){
@@ -27,6 +28,7 @@ public class InitialSetup {
 			driver.quit();
 			driver = null;
 		}
+		System.out.println("Closed the Browser.");
 
 	}
 
@@ -34,6 +36,7 @@ public class InitialSetup {
 		driver.manage().timeouts().implicitlyWait(MINTIME, TimeUnit.SECONDS);
 		driver.get(url);
 		driver.manage().window().maximize();
+		System.out.println("Navigating to the URL: "+url);
 	}
 	
 }

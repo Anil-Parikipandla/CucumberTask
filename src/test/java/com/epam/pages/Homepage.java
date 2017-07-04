@@ -25,14 +25,17 @@ public class Homepage extends BasePage {
 		WaitForClickableElement(SearchBar);
 		SearchBar.clear();
 		SearchBar.sendKeys(NameOfProduct);
+		System.out.println("Entered the Text: "+NameOfProduct+"in the Search Box");
 		
 		WaitForClickableElement(SearchButton);
 		SearchButton.click();
+		System.out.println("Clicked on Search button.");
 	}
 	
 	public ProductPage selectFirstProduct(){
 		WaitForClickableElement(firstProduct);
 		firstProduct.click();
+		System.out.println("Selected the First Product from the Search Results");
 		return new ProductPage(driver);
 	}
 	

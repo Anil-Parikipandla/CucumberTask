@@ -16,7 +16,7 @@ public class ShoppingCartPage extends BasePage{
 	}
 	
 	public boolean isProductAddedToCart(String productTitle)
-	{
+	{	System.out.println("Checking for the Product: "+productTitle+"in the Cart.");
 		return driver.findElement(By.partialLinkText(productTitle)).isEnabled();
 	}
 	

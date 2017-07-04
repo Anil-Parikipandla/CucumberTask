@@ -20,12 +20,16 @@ public class ProductPage extends BasePage{
 	}
 	
 	public String getProductTitle(){
+		waitForElementVisible(productTitle);
+		System.out.println("Product Title is:" + productTitle.getText());
 		return productTitle.getText();
 	}
 	
 	public ShoppingCartPage addProductToCart(){
 		WaitForClickableElement(AddToCart_Button);
 		AddToCart_Button.click();
+		System.out.println("Clicked on Add To Cart button.");
 		return new ShoppingCartPage(driver);
 	}
+	
 }

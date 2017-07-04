@@ -38,22 +38,23 @@ public class AddToCart {
 		Assert.assertEquals(EXPECTED_PAGE_TITLE, driver.getTitle(), "Ebay HomePage is not launched");
 	}
 
-	@When("^we search for fossil Mens Watch$")
-	public void we_search_for_fossil_Mens_Watch() {
-		Homepage.searchForProduct("fossil Mens Watch");
-		Homepage.selectFirstProduct();
+	@When("^we search for parker pen$")
+	public void we_search_for_parker_pen() {
+		Homepage.searchForProduct("parker pen");
+		productPage = Homepage.selectFirstProduct();
 	}
 
 	@When("^add it to cart$")
 	public void add_it_to_cart() {
 		ProductTitle = productPage.getProductTitle();
-		System.out.println(ProductTitle);
 		shoppingCartPage = productPage.addProductToCart();
 	}
 
-	@Then("^fossil Mens Watch should be added and displayed in the cart$")
-	public void fossil_Mens_Watch_should_be_added_and_displayed_in_the_cart() throws Throwable {
+	@Then("^parker pen should be added and displayed in the cart$")
+	public void parker_pen_should_be_added_and_displayed_in_the_cart() throws Throwable {
 		Assert.assertTrue(shoppingCartPage.isProductAddedToCart(ProductTitle), "Product is not Found in the Cart");
+		System.out.println("Product Found in the Cart.");
+		InitialSetup.CloseBrowser();
 	}
 
 	@When("^we search for \"([^\"]*)\"$")
@@ -65,8 +66,8 @@ public class AddToCart {
 	@Then("^\"([^\"]*)\" should be added and displayed in the cart$")
 	public void should_be_added_and_displayed_in_the_cart(String product) {
 		boolean blnStatus = shoppingCartPage.isProductAddedToCart(ProductTitle);
-		Assert.assertTrue(blnStatus, product + " is not added to the cart");
-		driver.quit();
-		driver = null;
+		Assert.assertTrue(blnStatus, product + "Product is not added to the cart");
+		System.out.println("Product Found in the Cart.");
+		InitialSetup.CloseBrowser();
 	}
 }
